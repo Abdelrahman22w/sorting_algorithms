@@ -1,6 +1,7 @@
 #include "sort.h"
 #include <stdbool.h>
-
+#include "print.c"
+#include "0-main.c"
 /**
 * swap - swap the values of integer
 * @a: first int
@@ -16,26 +17,7 @@ void swap(int *a, int *b)
 	*b = temp;
 }
 
-/**
- * print_array - Prints an array of integers
- *
- * @array: The array to be printed
- * @size: Number of elements in @array
- */
-void print_array(const int *array, size_t size)
-{
-	size_t i;
 
-	i = 0;
-	while (array && i < size)
-	{
-		if (i > 0)
-			printf(", ");
-		printf("%d", array[i]);
-		++i;
-	}
-	printf("\n");
-}
 
 /**
 * bubble_sort - sort an array in ascending order by bubble algo
@@ -69,4 +51,3 @@ void bubble_sort(int *array, size_t size)
 		len--;
 	} while (swapped);
 }
-
