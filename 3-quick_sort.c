@@ -12,25 +12,25 @@
  */
 int lomuto_partition(int *array, size_t size, int low, int high)
 {
-    int pivot = array[high];
-    int i = low - 1;
+	int pivot = array[high];
+	int i = low - 1;
 	int j;
 
-    for (j = low ; j <= high - 1; j++)
-    {
-        if (array[j] < pivot)
-        {
-            i++;
-            swap(&array[i], &array[j]);
-            print_array(array, size);
-        }
-    }
+	for (j = low ; j <= high - 1; j++)
+	{
+		if (array[j] < pivot)
+		{
+			i++;
+			swap(&array[i], &array[j]);
+			print_array(array, size);
+		}
+	}
 
-    i++;
-    swap(&array[i], &array[high]);
-    print_array(array, size);
+	i++;
+	swap(&array[i], &array[high]);
+	print_array(array, size);
 
-    return (i);
+	return (i);
 }
 /**
  * lomuto_sort - Implement the quicksort algorithm using Lomuto partition.
@@ -41,13 +41,13 @@ int lomuto_partition(int *array, size_t size, int low, int high)
  */
 void lomuto_sort(int *array, size_t size, int low, int high)
 {
-    if (low < high)
-    {
-        int pivot_idx = lomuto_partition(array, size, low, high);
+	if (low < high)
+	{
+		int pivot_idx = lomuto_partition(array, size, low, high);
 
-        lomuto_sort(array, size, low, pivot_idx - 1);
-        lomuto_sort(array, size, pivot_idx + 1, high);
-    }
+		lomuto_sort(array, size, low, pivot_idx - 1);
+		lomuto_sort(array, size, pivot_idx + 1, high);
+	}
 }
 
 /**
