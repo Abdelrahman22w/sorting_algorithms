@@ -8,46 +8,17 @@
  */
 void swap_nodes(listint_t **h, listint_t **n1, listint_t *n2)
 {
-	listint_t *n1_prev = (*n1)->prev;
-    listint_t *n1_next = (*n1)->next;
-    listint_t *n2_prev = n2->prev;
-    listint_t *n2_next = n2->next;
-	
-    if (*n1 == NULL || n2 == NULL || *h == NULL)
-        return; /* Check for invalid pointers */
-
-    /* Save the next and previous nodes of n1 and n2 */
-
-
-    /* Update n1's next and prev pointers */
-    (*n1)->prev = n2_prev;
-    (*n1)->next = n2_next;
-
-    /* Update n2's next and prev pointers */
-    if (n2_prev != NULL)
-        n2_prev->next = *n1;
-    else
-        *h = *n1; /* Update the head if n2 was the head */
-
-    if (n2_next != NULL)
-        n2_next->prev = *n1;
-
-    /* Update n2's next and prev pointers */
-    n2->prev = n1_prev;
-    n2->next = *n1;
-
-    /* Update n1's next node's prev pointer */
-    if (n1_next != NULL)
-        n1_next->prev = n2;
-
-    /* Update n1's prev node's next pointer */
-    if (n1_prev != NULL)
-        n1_prev->next = n2;
-    else
-        *h = n2; /* Update the head if n1 was the head */
-
-    /* Update n1 pointer to its new position */
-    *n1 = n2;
+	(*n1)->next = n2->next;
+	if (n2->next != NULL)
+		n2->next->prev = *n1;
+	n2->prev = (*n1)->prev;
+	n2->next = *n1;
+	if ((*n1)->prev != NULL)
+		(*n1)->prev->next = n2;
+	else
+		*h = n2;
+	(*n1)->prev = n2;
+	*n1 = n2->prev;
 }
 
 /**
