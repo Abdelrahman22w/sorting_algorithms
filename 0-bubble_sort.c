@@ -17,6 +17,27 @@ void swap(int *a, int *b)
 }
 
 /**
+ * print_array - Prints an array of integers
+ *
+ * @array: The array to be printed
+ * @size: Number of elements in @array
+ */
+void print_array(const int *array, size_t size)
+{
+	size_t i;
+
+	i = 0;
+	while (array && i < size)
+	{
+		if (i > 0)
+			printf(", ");
+		printf("%d", array[i]);
+		++i;
+	}
+	printf("\n");
+}
+
+/**
 * bubble_sort - sort an array in ascending order by bubble algo
 * @array: the array to be sorted
 * @size: the size of the array
@@ -47,4 +68,16 @@ void bubble_sort(int *array, size_t size)
 
 		len--;
 	} while (swapped);
+}
+
+int main(void)
+{
+	int array[] = {5, 1, 4, 2, 8};
+	size_t size = sizeof(array) / sizeof(array[0]);
+
+	print_array(array, size);
+	bubble_sort(array, size);
+	print_array(array, size);
+
+	return 0;
 }
