@@ -70,14 +70,3 @@ void bubble_sort(int *array, size_t size)
 	} while (swapped);
 }
 
-int main(void)
-{
-	int array[] = {5, 1, 4, 2, 8};
-	size_t size = sizeof(array) / sizeof(array[0]);
-
-	print_array(array, size);
-	bubble_sort(array, size);
-	print_array(array, size);
-
-	return 0;
-}
