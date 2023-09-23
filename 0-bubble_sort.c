@@ -2,12 +2,12 @@
 #include <stdbool.h>
 
 /**
-* _swap - swap the values of integer
+* swap - swap the values of integer
 * @a: first int
 * @b: second int
 */
 
-void _swap(int *a, int *b)
+void swap(int *a, int *b)
 {
 	int temp;
 
@@ -39,7 +39,7 @@ void bubble_sort(int *array, size_t size)
 		{
 			if (array[i] > array[i + 1])
 			{
-				_swap(array + i, array + i + 1);
+				swap(array + i, array + i + 1);
 				swapped = true;
 				print_array(array, size);
 			}
