@@ -1,7 +1,6 @@
 #include "sort.h"
 #include <stdbool.h>
-#include "print.c"
-#include "0-main.c"
+
 /**
 * swap - swap the values of integer
 * @a: first int
