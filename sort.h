@@ -35,5 +35,7 @@ void quick_sort(int *array, size_t size);
 int lomuto_partition(int *array, size_t size, int low, int high);
 void lomuto_sort(int *array, size_t size, int low, int high);
 void quick_sort(int *array, size_t size);
+int find_max(int *array, int size);
+void counting_sort(int *array, int size);
 
 #endif
