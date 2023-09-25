@@ -27,7 +27,7 @@ int get_max(int *array, int size)
 void counting_sort(int *array, int size)
 {
 	int max, *count_arr, *sorted_arr, i;
-
+	
 	max = get_max(array, size);
 	count_arr = (int *)malloc(sizeof(int) * (max + 1));
 	sorted_arr = (int *)malloc(sizeof(int) * size);
@@ -42,6 +42,7 @@ void counting_sort(int *array, int size)
 		free(sorted_arr);
 		return;
 	}
+
 	for (i = 0; i <= max; i++)
 	{
 		count_arr[i] = 0;
