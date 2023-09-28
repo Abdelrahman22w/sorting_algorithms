@@ -41,6 +41,7 @@ void merge(int *array, int *temp, size_t left_size, size_t right_size);
 void _merge_sort(int *array, int *temp, size_t size);
 void merge_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
-
+void cocktail_sort_list(listint_t **list);
+void swap_n(listint_t **list, listint_t *node);
 
 #endif
