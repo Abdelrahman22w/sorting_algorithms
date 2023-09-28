@@ -1,67 +1,79 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
- * sift_down - Perform the sift-down operation on a max-heap
- * @array: The array representing the max-heap
- * @size: The size of the max-heap
- * @root: The root index of the subtree to sift down
+ * sift_down - fixes a heap
+ * @array: the heap to fix
+ * @root: the root of the heap
+ * @end: the last index of the heap
+ * @size: size of the array
+ *
+ * Return: void
  */
-void sift_down(int *array, size_t size, size_t root)
+void sift_down(int *array, size_t root, size_t end, size_t size)
 {
-	size_t max = root;
-	size_t left_child = 2 * root + 1;
-	size_t right_child = 2 * root + 2;
+	size_t left_child, right_child, swap;
+	int temp;
 
-	if (left_child < size && array[left_child] > array[max])
-		max = left_child;
-
-	if (right_child < size && array[right_child] > array[max])
-		max = right_child;
-
-	if (max != root)
+	while ((left_child = (2 * root) + 1) <= end)
 	{
-		/* Swap the root with the max element */
-		int temp = array[root];
-
-		array[root] = array[max];
-		array[max] = temp;
-
-		/* Recursively sift down the affected subtree */
-		sift_down(array, size, max);
+		swap = root;
+		right_child = left_child + 1;
+		if (array[swap] < array[left_child])
+			swap = left_child;
+		if (right_child <= end && array[swap] < array[right_child])
+			swap = right_child;
+		if (swap == root)
+			return;
+		temp = array[root];
+		array[root] = array[swap];
+		array[swap] = temp;
+		print_array(array, size);
+		root = swap;
 	}
 }
 
 /**
- * heap_sort - Sorts an array of integers in ascending order using Heap Sort
- * @array: The array to be sorted
- * @size: The size of the array
+ * make_heap - makes a heap from an unsorted array
+ * @array: array to turn into a heap
+ * @size: size of the array
+ *
+ * Return: void
+ */
+void make_heap(int *array, size_t size)
+{
+	size_t parent;
+
+	for (parent = ((size - 1) - 1) / 2; 1; parent--)
+	{
+		sift_down(array, parent, size - 1, size);
+		if (parent == 0)
+			break;
+	}
+}
+
+/**
+ * heap_sort - sorts an array of ints in ascending order w/ the Heap sort algo
+ * @array: array to sort
+ * @size: size of the array
+ *
+ * Return: void
  */
 void heap_sort(int *array, size_t size)
 {
-	int i;
+	size_t end;
+	int temp;
 
-	/* Build the max-heap */
-	for (i = size / 2 - 1; i >= 0; i--)
+	if (array == NULL || size < 2)
+		return;
+	make_heap(array, size);
+	end = size - 1;
+	while (end > 0)
 	{
-		sift_down(array, size, i);
-	}
-
-	print_array(array, size);  /* Print the initial array */
-
-	/* Extract elements one by one and perform sift-down */
-	for (i = size - 1; i > 0; i--)
-	{
-		/* Swap the root (maximum element) with the last element */
-		int temp = array[0];
-
-		array[0] = array[i];
-		array[i] = temp;
-
-		/* Print the array after each swap */
+		temp = array[end];
+		array[end] = array[0];
+		array[0] = temp;
 		print_array(array, size);
-
-		/* Perform sift-down on the reduced heap */
-		sift_down(array, i, 0);
+		end--;
+		sift_down(array, 0, end, size);
 	}
 }
