@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * swap - swaps two nodes in a doubly linked list
+ * swap_n - swaps two nodes in a doubly linked list
  * @list: double pointer to the beginning of the list
  * @node: node to swap
  *
@@ -48,7 +48,6 @@ void cocktail_sort_list(listint_t **list)
 		return;
 
 	temp = *list;
-
 	while (swapped != 0)
 	{
 		swapped = 0;
