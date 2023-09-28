@@ -40,6 +40,7 @@ void counting_sort(int *array, int size);
 void merge(int *array, int *temp, size_t left_size, size_t right_size);
 void _merge_sort(int *array, int *temp, size_t size);
 void merge_sort(int *array, size_t size);
+void shell_sort(int *array, size_t size);
 
 
 #endif
